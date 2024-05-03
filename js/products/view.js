@@ -41,3 +41,9 @@ export function renderProducts(productsArray) {
     });
 
 }
+
+export function updateCounter(product) {
+    const counterWrapper = document.querySelector(`[data-id="${product.id}"]`)
+    const counterElement = counterWrapper.querySelector('[data-counter]')
+    counterElement.innerHTML = product.counter
+}
