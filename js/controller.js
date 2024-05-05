@@ -3,6 +3,7 @@ import CartModel from './cart/model.js'
 
 
 import * as productsView from './products/view.js'
+import * as cartView from './cart/view.js'
 
 const productsModel = new ProductsModel()
 const cartModel = new CartModel()
@@ -33,6 +34,10 @@ productsView.elements.productsContainer.addEventListener('click', function(event
         const product = productsModel.getProduct(productId)
        
         cartModel.addToCart(product)
+        cartView.renderCart(cartModel.cart)
+
+        productsModel.resetCounter(product)
+        productsView.updateCounter(product)
 
     }
 

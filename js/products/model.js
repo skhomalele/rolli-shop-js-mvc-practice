@@ -30,4 +30,8 @@ export default class Model {
         const product = this.products.find((item) => item.id === id)
         return product
     }
+
+    resetCounter(product) {
+        product.counter = 1
+    }
 }
