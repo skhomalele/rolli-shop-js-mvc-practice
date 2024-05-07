@@ -39,6 +39,8 @@ productsView.elements.productsContainer.addEventListener('click', function(event
         productsModel.resetCounter(product)
         productsView.updateCounter(product)
 
+        const totalPrice = cartModel.getTotalCartPrice()
+        cartView.updateOrderPrice(totalPrice)
     }
 
     

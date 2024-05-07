@@ -37,7 +37,23 @@ export function renderCart(product) {
                                 </div>`
 
          cartHTML = cartHTML +cartItemHTML
+         
     });
 
    elements.cartWrapper.innerHTML = cartHTML
+   toggleCart()
+}
+
+function toggleCart() {
+    if (elements.cartWrapper.children.length > 0) {
+        elements.cartEmptyBadge.classList.add('none')
+        elements.orderForm.classList.remove('none')
+    } else {
+        elements.cartEmptyBadge.classList.remove('none')
+        elements.orderForm.classList.remove('none')
+    }
+}
+
+export function updateOrderPrice(price) {
+    elements.totalPrice.innerText = new Intl.NumberFormat().format(price)
 }

@@ -19,4 +19,15 @@ export default class Model {
         
         console.log(this.cart)
     }
+
+    getTotalCartPrice() {
+        let totalPrice = 0
+
+        this.cart.forEach(function(item) {
+            totalPrice = totalPrice + item.price * item.counter
+
+        })
+
+        return totalPrice
+    }
 }
