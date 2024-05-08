@@ -28,7 +28,7 @@ export function renderCart(product) {
                                                 </div>
 
                                                 <div class="price">
-                                                    <div class="price__currency">${item.price}</div>
+                                                    <div class="price__currency">${item.price} ₽</div>
                                                 </div>
                                             </div>
                                             <!-- // cart-item__details -->
@@ -50,10 +50,23 @@ function toggleCart() {
         elements.orderForm.classList.remove('none')
     } else {
         elements.cartEmptyBadge.classList.remove('none')
-        elements.orderForm.classList.remove('none')
+        elements.orderForm.classList.add('none')
     }
 }
 
 export function updateOrderPrice(price) {
     elements.totalPrice.innerText = new Intl.NumberFormat().format(price)
+}
+
+export function updateCounter(product) {
+    const productWrapper = elements.cartWrapper.querySelector(`[data-id="${product.id}"]`)
+    const counterElement = productWrapper.querySelector('[data-counter]')
+    counterElement.innerText = product.counter
+}
+
+export function removeItemFromCart(product) {
+    const productWrapper = elements.cartWrapper.querySelector(`[data-id="${product.id}"]`)
+    productWrapper.remove()
+
+    toggleCart()
 }

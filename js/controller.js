@@ -45,3 +45,27 @@ productsView.elements.productsContainer.addEventListener('click', function(event
 
     
 })
+
+cartView.elements.cartWrapper.addEventListener('click', function (event) {
+    let action = event.target.dataset.action
+
+    if(action === 'plus' || action === 'minus') {
+        const productId = +event.target.closest('.cart-item').dataset.id
+
+       const productInCart = cartModel.updateCounterInCart(productId, action)
+
+       if (productInCart.counter > 0) {
+
+        cartView.updateCounter(productInCart)
+
+       } else {
+
+        cartView.removeItemFromCart(productInCart)
+
+       }
+
+       const totalPrice = cartModel.getTotalCartPrice()
+       cartView.updateOrderPrice(totalPrice)
+       
+    }
+})
