@@ -8,12 +8,18 @@ import * as cartView from './cart/view.js'
 const productsModel = new ProductsModel()
 const cartModel = new CartModel()
 
+
 console.log(cartModel)
 
 
 async function getAndRenderProducts() {
     await productsModel.loadProducts()
     productsView.renderProducts(productsModel.products)
+    cartView.renderCart(cartModel.cart)
+
+    
+    const totalPrice = cartModel.getTotalCartPrice()
+    cartView.updateOrderPrice(totalPrice)
 }
 
 getAndRenderProducts()
